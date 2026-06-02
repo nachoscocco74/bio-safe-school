@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/barraNavegacionInferior"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/contenedorDinamico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ===================== PANTALLA INICIO ===================== -->
+            <LinearLayout
+                android:id="@+id/layoutInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1A1A1A"
+                    android:padding="20dp"
+                    android:layout_marginHorizontal="-16dp"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🧪 PURABOX"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#D32F2F"
+                        android:letterSpacing="0.05"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SISTEMA DE ESTERILIZACIÓN IOT · AULA 3B"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="#8E8E93"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <!-- Banner Conexion -->
+                <LinearLayout
+                    android:id="@+id/bannerConexion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#1C1C1E"
+                    android:padding="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/txtBannerTitulo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DISPOSITIVO DESCONECTADO"
+                            android:textColor="#FF453A"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:letterSpacing="0.02"/>
+                        <TextView
+                            android:id="@+id/txtBannerInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Enlace requerido mediante Bluetooth o enlace WiFi corporativo."
+                            android:textColor="#AEAEB2"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btnAccionConectar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:text="ENLAZAR"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16dp"
+                        android:backgroundTint="#D32F2F"
+                        android:textColor="#FFFFFF"/>
+                </LinearLayout>
+
+                <!-- Panel Control UVC -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#1C1C1E"
+                    android:padding="20dp"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CONTROL DE EMISIÓN UVC"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:letterSpacing="0.03"/>
+                    <TextView
+                        android:id="@+id/txtEstadoSub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● SISTEMA BLOQUEADO (SIN CONEXIÓN)"
+                        android:textColor="#FF453A"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Campo nombre del producto -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IDENTIFICACIÓN DEL ELEMENTO"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:textColor="#D32F2F"
+                        android:layout_marginBottom="4dp"/>
+                    <EditText
+                        android:id="@+id/editNombreProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Ej: Mouse, Teclado, Reloj, Tijera..."
+                        android:text="Dispositivo Aula 3B"
+                        android:textSize="14sp"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#48484A"
+                        android:backgroundTint="#3A3A3C"
+                        android:inputType="textCapWords"
+                        android:enabled="false"
+                        android:paddingHorizontal="8dp"/>
+
+                    <!-- Badge detección de material -->
+                    <LinearLayout
+                        android:id="@+id/layoutBadgeMaterial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="14dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MATERIAL:"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#8E8E93"
+                            android:layout_marginEnd="6dp"/>
+                        <TextView
+                            android:id="@+id/txtBadgeMaterial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PLÁSTICO PURO"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:background="#D32F2F"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" → TIEMPO AJUSTADO AUTOMÁTICAMENTE"
+                            android:textSize="10sp"
+                            android:textColor="#30D158"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <!-- Sin badge (cuando no detecta) -->
+                    <TextView
+                        android:id="@+id/txtAvisoManual"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="10sp"
+                        android:textColor="#8E8E93"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DURACIÓN CONFIGURADA DEL CICLO"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:textColor="#D32F2F"/>
+
+                    <!-- Botones de tiempo rápido -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:layout_marginVertical="10dp">
+                        <Button android:id="@+id/btnFast2" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="2 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                        <Button android:id="@+id/btnFast3" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="3 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                        <Button android:id="@+id/btnFast5" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="5 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                        <Button android:id="@+id/btnFast10" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="10 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginBottom="4dp">
+                        <Button android:id="@+id/btnFast15" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="15 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                        <Button android:id="@+id/btnFast20" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="20 MIN" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#2C2C2E" android:textColor="#48484A" android:layout_margin="2dp" android:enabled="false"/>
+                    </LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/seekBarTiempo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="20"
+                        android:progress="5"
+                        android:layout_marginVertical="12dp"
+                        android:thumbTint="#D32F2F"
+                        android:progressTint="#D32F2F"
+                        android:progressBackgroundTint="#3A3A3C"
+                        android:enabled="false"/>
+
+                    <TextView
+                        android:id="@+id/textoTemporizador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="05:00"
+                        android:textSize="64sp"
+                        android:textStyle="normal"
+                        android:textColor="#3A3A3C"
+                        android:gravity="center"
+                        android:fontFamily="monospace"/>
+                    <TextView
+                        android:id="@+id/textoEstadoCiclo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ESTABLEZCA CONEXIÓN FÍSICA PARA DESBLOQUEAR SISTEMA"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#636366"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp"
+                        android:letterSpacing="0.02"/>
+
+                    <Button
+                        android:id="@+id/botonIniciar"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:text="CONEXIÓN REQUERIDA"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.05"
+                        android:backgroundTint="#2C2C2E"
+                        android:textColor="#48484A"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <!-- Banner seguridad -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2C0E0E"
+                    android:padding="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚠️ CORTE DE SEGURIDAD INDUSTRIAL AUTOMÁTICO ANTE APERTURA DE TAPA"
+                        android:textColor="#FF453A"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===================== PANTALLA CONEXION ===================== -->
+            <LinearLayout
+                android:id="@+id/layoutConexion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SINCRONIZACIÓN DE HARDWARE"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="14dp"
+                    android:letterSpacing="0.03"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="16dp">
+                    <Button android:id="@+id/btnModoBT" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="BLUETOOTH" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#D32F2F" android:textColor="#FFFFFF"/>
+                    <Button android:id="@+id/btnModoWiFi" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="WIFI NETWORK" android:textSize="11sp" android:textStyle="bold" android:backgroundTint="#1C1C1E" android:textColor="#AEAEB2"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panelBluetooth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MÓDULOS DISPONIBLES EN RANGO" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginBottom="8dp"/>
+                    <Button android:id="@+id/btnDevBT1" android:layout_width="match_parent" android:layout_height="50dp" android:text="🧪 PURABOX-3B (ESP32 BT - SALA 3B)" android:gravity="left|center_vertical" android:textSize="12sp" android:backgroundTint="#1C1C1E" android:textColor="#E5E5EA" android:layout_marginBottom="6dp" android:paddingHorizontal="16dp"/>
+                    <Button android:id="@+id/btnDevBT2" android:layout_width="match_parent" android:layout_height="50dp" android:text="🧪 PURABOX-LAB (ESP32 BT - LABORATORIO)" android:gravity="left|center_vertical" android:textSize="12sp" android:backgroundTint="#1C1C1E" android:textColor="#E5E5EA" android:paddingHorizontal="16dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panelWiFi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DIRECCIÓN IP DE LA ESTACIÓN" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93"/>
+                    <EditText android:id="@+id/editIP" android:layout_width="match_parent" android:layout_height="48dp" android:text="192.168.1.105" android:textColor="#FFFFFF" android:backgroundTint="#3A3A3C" android:inputType="phone" android:paddingHorizontal="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PUERTO DE ENLACE TCP" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginTop="10dp"/>
+                    <EditText android:id="@+id/editPuerto" android:layout_width="match_parent" android:layout_height="48dp" android:text="80" android:textColor="#FFFFFF" android:backgroundTint="#3A3A3C" android:inputType="number" android:paddingHorizontal="8dp"/>
+                    <Button android:id="@+id/btnConectarWiFi" android:layout_width="match_parent" android:layout_height="50dp" android:text="INICIAR PROTOCOLO DE ENLACE" android:textSize="12sp" android:textStyle="bold" android:backgroundTint="#D32F2F" android:textColor="#FFFFFF" android:layout_marginTop="16dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===================== PANTALLA IMPACTO ===================== -->
+            <LinearLayout
+                android:id="@+id/layoutImpacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MÉTRICAS DE TRIPLE IMPACTO"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="14dp"
+                    android:letterSpacing="0.03"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:rowCount="2"
+                    android:alignmentMode="alignBounds">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:background="#1C1C1E" android:padding="16dp" android:orientation="vertical" android:layout_margin="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plástico evitado" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93"/>
+                        <TextView android:id="@+id/txtImpactoPlastico" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 g" android:textSize="24sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="4dp"/>
+                        <TextView android:id="@+id/txtImpactoEnvases" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="≈ 0 envases descartables" android:textSize="11sp" android:textColor="#636366"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:background="#1C1C1E" android:padding="16dp" android:orientation="vertical" android:layout_margin="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ahorro económico" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93"/>
+                        <TextView android:id="@+id/txtImpactoAhorro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0" android:textSize="24sp" android:textStyle="bold" android:textColor="#D32F2F" android:layout_marginTop="4dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Insumos químicos mitigados" android:textSize="11sp" android:textColor="#636366"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:background="#1C1C1E" android:padding="16dp" android:orientation="vertical" android:layout_margin="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ciclos completados" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93"/>
+                        <TextView android:id="@+id/txtImpactoCiclos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="4dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Esterilizaciones exitosas" android:textSize="11sp" android:textColor="#636366"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:background="#1C1C1E" android:padding="16dp" android:orientation="vertical" android:layout_margin="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Huella de CO₂" android:textSize="11sp" android:textStyle="bold" android:textColor="#8E8E93"/>
+                        <TextView android:id="@+id/txtImpactoCO2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.0 kg" android:textSize="24sp" android:textStyle="bold" android:textColor="#D32F2F" android:layout_marginTop="4dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Emisiones no liberadas" android:textSize="11sp" android:textColor="#636366"/>
+                    </LinearLayout>
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- ===================== PANTALLA INVENTARIO ===================== -->
+            <LinearLayout
+                android:id="@+id/layoutInventario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTRO DE INVENTARIO DIGITAL"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="14dp"
+                    android:letterSpacing="0.03"/>
+                <TextView
+                    android:id="@+id/txtListaInventario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#1C1C1E"
+                    android:padding="16dp"
+                    android:lineSpacingExtra="6dp"
+                    android:text="Sin registros de sanitización indexados en la sesión actual."
+                    android:textColor="#AEAEB2"
+                    android:textSize="13sp"
+                    android:fontFamily="monospace"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===================== BARRA NAVEGACIÓN INFERIOR ===================== -->
+    <LinearLayout
+        android:id="@+id/barraNavegacionInferior"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="#1C1C1E"
+        android:layout_alignParentBottom="true"
+        android:weightSum="4"
+        android:paddingTop="6dp">
+        <LinearLayout android:id="@+id/tabInicio" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="16sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="INICIO" android:textSize="10sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/tabConexion" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛜" android:textSize="16sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ENLACE" android:textSize="10sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/tabImpacto" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍃" android:textSize="16sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IMPACTO" android:textSize="10sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/tabInventario" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📋" android:textSize="16sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LOG" android:textSize="10sp" android:textStyle="bold" android:textColor="#8E8E93" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
